@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <title>
+        JohnWeb
+    </title>
+</head>
+
+<body class=$colors>
+    <div id="fact">
+        your fact is loading....
+    </div>
+
+    <script>
+        async function fact() {
+            let fact = await fetch("https://numbersapi.p.rapidapi.com/random/trivia?max=20&fragment=true&min=10&json=true", {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "numbersapi.p.rapidapi.com",
+                    "x-rapidapi-key": "2d26ff7e4bmshea452d9f1ad4900p172892jsn9ba47c93c24c"
+                }
+            })
+            let data = await fact.json();
+            console.log(data);
+
+            document.getElementById("fact").innerText = data.text;
+
+ 
+        }
+        fact();
+    </script>
+    <button onclick="fact()">
+        new fact
+
+    </button>
+</body> 
